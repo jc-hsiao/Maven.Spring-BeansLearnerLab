@@ -52,4 +52,13 @@ public abstract class People <E extends Person> implements Iterable<E> {
     public Iterator<E> iterator() {
         return personList.iterator();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder str= new StringBuilder();
+        for(Person p :personList){
+            str.append(p).append("\n");
+        }
+        return "== personList ==\n" +str;
+    }
 }
