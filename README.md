@@ -1,4 +1,4 @@
-# Bean Flavored Learner Lab
+# Bean Flavored com.example.demo.Learner Lab
 * **Objective** - to register a `Classroom` bean which _mediates_ a _composite_ `Students` and `Instructors` bean reference.
 * **Purpose** - to demonstrate the use of
 	* Bean registration
@@ -32,31 +32,31 @@
 * Open the project via its `pom.xml` from IntelliJ > File > Open
 	* Be sure to `Open as Project` when prompted 
 
-### Part 1.0 - Create `Person` Class
-* Create a `Person` class.
+### Part 1.0 - Create `com.example.demo.Person` Class
+* Create a `com.example.demo.Person` class.
 	* The class should declare a `final` field named `id` of type `long`.
 	* The class should declare a field named `name` of type `String`.	
-	* `Person` constructor should have a parameter of type `Long id, String name` which sets each of the fields to their respective value.
-	* The class should define a `getId()` method which returns the `Person` object's `id` field.
-	* The class should define a `getName()` method which returns the `Person` object's `name` field.
-	* The class should define a `setName()` method which sets the `Person` object's `name` field.
+	* `com.example.demo.Person` constructor should have a parameter of type `Long id, String name` which sets each of the fields to their respective value.
+	* The class should define a `getId()` method which returns the `com.example.demo.Person` object's `id` field.
+	* The class should define a `getName()` method which returns the `com.example.demo.Person` object's `name` field.
+	* The class should define a `setName()` method which sets the `com.example.demo.Person` object's `name` field.
 
 -
-### Part 2.0 - Create `Learner` Interface
-* Create a `Learner` interface.
-	* `Learner` should declare one method signature:
+### Part 2.0 - Create `com.example.demo.Learner` Interface
+* Create a `com.example.demo.Learner` interface.
+	* `com.example.demo.Learner` should declare one method signature:
 		* Method name: `learn`
 		* Method parameters: `double numberOfHours`
 		* Method return-type: `void`
 
 -
-### Part 3.0 - Create `Student` Class
-* Create a `Student` class such that:
-	* `Student` is a subclass of `Person`
-	* `Student` implements the `Learner` interface
-	* `Student` should have an instance variable `totalStudyTime` of type `double`
-	* `Student` should have a concrete implementation of the `learn` method which increments the `totalStudyTime` variable by the specified `numberOfHours` argument.
-	* `Student` should have a `getTotalStudyTime()` method which returns the `totalStudyTime` instance variable.
+### Part 3.0 - Create `com.example.demo.Student` Class
+* Create a `com.example.demo.Student` class such that:
+	* `com.example.demo.Student` is a subclass of `com.example.demo.Person`
+	* `com.example.demo.Student` implements the `com.example.demo.Learner` interface
+	* `com.example.demo.Student` should have an instance variable `totalStudyTime` of type `double`
+	* `com.example.demo.Student` should have a concrete implementation of the `learn` method which increments the `totalStudyTime` variable by the specified `numberOfHours` argument.
+	* `com.example.demo.Student` should have a `getTotalStudyTime()` method which returns the `totalStudyTime` instance variable.
 
 
 -
@@ -65,14 +65,14 @@
 	* `Teacher` should declare a `teach` method signature:
 		* Method name: `teach`
 		* Method parameters:
-			* `Learner learner`
+			* `com.example.demo.Learner learner`
 			* `double numberOfHours`
 		* Method return-type: `void` 
 
 	* `Teacher` should declare a `lecture` method signature:
 		* Method name: `lecture`
 		* Method parameters:
-			* `Iterable<? extends Learner> learners`
+			* `Iterable<? extends com.example.demo.Learner> learners`
 			* `double numberOfHours`
 		* Method return-type: `void`
 
@@ -80,16 +80,16 @@
 -
 ### Part 5.0 - Create `Instructor` Class
 * Create an `Instructor` class such that:
-	* `Instructor` is a subclass of `Person`
+	* `Instructor` is a subclass of `com.example.demo.Person`
 	* `Instructor` implements the `Teacher` interface
-	* `Instructor` should have a concrete implementation of the `teach` method which invokes the `learn` method on the specified `Learner` object.
-	* `Instructor` should have a concrete implementation of the `lecture` method which invokes the `learn` method on each of the elements in the specified array of `Learner` objects.
+	* `Instructor` should have a concrete implementation of the `teach` method which invokes the `learn` method on the specified `com.example.demo.Learner` object.
+	* `Instructor` should have a concrete implementation of the `lecture` method which invokes the `learn` method on each of the elements in the specified array of `com.example.demo.Learner` objects.
 		* `numberOfHours` should be evenly split amongst the learners.
 			* `double numberOfHoursPerLearner = numberOfHours / learners.length;`
 
 ### Part 6.0 - Create `People`
 * Create an abstract `People` class
-	* The class signature should be parameterized with `PersonType` such that `PersonType` is a sub class of `Person`.
+	* The class signature should be parameterized with `PersonType` such that `PersonType` is a sub class of `com.example.demo.Person`.
 	* The class should implement `Iterable` of type `PersonType`.
 	* Upon construction `People` should consume a `List` of `PersonType` and set it to a respective `personList` field.
 	* The class should define a constructor which consumes a variable number of `PersonType` objects and sets the `personList` field respectively.
@@ -106,8 +106,8 @@
 -
 ### Part 7.0 - Create `Students` 
 * Create a `Students` class.
-	* The class should be a subclass of `People` of parameterized type `Student`.
-	* The class should consume a variable number of `Student` objects upon construction and pass them to the super constructor.
+	* The class should be a subclass of `People` of parameterized type `com.example.demo.Student`.
+	* The class should consume a variable number of `com.example.demo.Student` objects upon construction and pass them to the super constructor.
 
 -
 ### Part 8.0 - Create `Instructors` 
@@ -219,14 +219,14 @@
 -
 ### Part 11.1 - Create `Alumni` Class
 * Create an `Alumni` component which autowires `Students` of the previous cohort and `Instructors`
-* Create an `executeBootcamp` method which teaches each `Student` in the composite `Students` a `totalNumberOfHours` of `1200`.
+* Create an `executeBootcamp` method which teaches each `com.example.demo.Student` in the composite `Students` a `totalNumberOfHours` of `1200`.
 	* Annotate this method with `@PostConstruct`
 		* denotes that this method must be executed before the class is put into an IoC container
 * Create a getter for each of the fields.
 
 -
 ### Part 11.2 - Test `Alumni` Class
-* Write a test class which ensures that each `Student` in the `Alumni` class has been taught `1200` hours upon injection of the `Alumni` dependency.
+* Write a test class which ensures that each `com.example.demo.Student` in the `Alumni` class has been taught `1200` hours upon injection of the `Alumni` dependency.
 * Ensure the `numberOfHoursTaught` has been evenly distributed amongst each of the instructors.
 
 * **Tip:** How to derive `numberOfHoursTaught` dynamically
