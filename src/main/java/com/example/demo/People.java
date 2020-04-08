@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public abstract class People <E extends Person> implements Iterable<E> {
@@ -47,6 +48,8 @@ public abstract class People <E extends Person> implements Iterable<E> {
         return personList;
     }
 
-
-
+    @Override
+    public Iterator<E> iterator() {
+        return personList.iterator();
+    }
 }
